@@ -2,6 +2,7 @@
 # Grayson Pike, 2016
 
 import subprocess
+import os
 import tts
 
 def main():
@@ -13,5 +14,8 @@ def main():
     # Generate and play TTS
     tts.download(greeting + " " + forecast)
     subprocess.call("avplay -nodisp -autoexit message.mp3", shell=True)
+
+    # Remove MP3 file
+    os.remove("message.mp3")
 
 main()
