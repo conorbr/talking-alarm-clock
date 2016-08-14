@@ -12,12 +12,16 @@ def get_weather(location="SanAntonio TX"):
 
     # Create dictionary object to return
     ret_obj = {}
-    ret_obj['temp'] = req_obj['item']['condition']['temp']
-    ret_obj['high'] = req_obj['item']['forecast'][0]['high']
-    ret_obj['low'] = req_obj['item']['forecast'][0]['low']
-    ret_obj['condition'] = req_obj['item']['condition']['text']
-    ret_obj['humidity'] = req_obj['atmosphere']['humidity']
-    ret_obj['city'] = req_obj['location']['city']
+    try:
+        ret_obj['temp'] = req_obj['item']['condition']['temp']
+        ret_obj['high'] = req_obj['item']['forecast'][0]['high']
+        ret_obj['low'] = req_obj['item']['forecast'][0]['low']
+        ret_obj['condition'] = req_obj['item']['condition']['text']
+        ret_obj['humidity'] = req_obj['atmosphere']['humidity']
+        ret_obj['city'] = req_obj['location']['city']
+    except KeyError:
+        print("Failed to fetch weather conditions.")
+        return False
     
     return ret_obj
 
