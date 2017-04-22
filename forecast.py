@@ -3,10 +3,10 @@
 import json
 from myql.contrib.weather import Weather
 
-def get_weather(location="SanAntonio TX"):
+def get_weather(location="Dublin IRL"):
 
     # Query weather from Yahoo Weather using mYQL
-    weather = Weather(unit='f', format='json')
+    weather = Weather(unit='c', format='json')
     req_obj = json.loads(weather.get_weather_in(location).text)
     req_obj = req_obj['query']['results']['channel']
 
@@ -22,6 +22,5 @@ def get_weather(location="SanAntonio TX"):
     except KeyError:
         print("Failed to fetch weather conditions.")
         return False
-    
-    return ret_obj
 
+    return ret_obj
