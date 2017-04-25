@@ -23,7 +23,7 @@ def get_current_time():
     # If single digit minute, add 'oh' to the beginning
     if minute < 10:
         minute = "0" + str(minute)
-    
+
     return str(hour) + " " + str(minute) + " " + ("PM" if pm else "AM")
 
 def get_current_day_of_week():
@@ -35,7 +35,7 @@ def get_current_day():
 def get_current_month():
     return calendar.month_name[ datetime.datetime.now().month ]
 
-def get_current_greet_time():
+def get_current_greet_time(): #so greeting dosen't sound mad when triggerd in afternoon
     hour = datetime.datetime.now().hour
     if hour < 12:
         return "morning"
@@ -43,4 +43,3 @@ def get_current_greet_time():
         return "afternoon"
     else:
         return "evening"
-
